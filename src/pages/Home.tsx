@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom'
 import { recipes, getDifficultyColor } from '../data/recipes'
 
 const allTags = [
-  { key: 'salsas', label: '🧈 Salsas' },
-  { key: 'carnes', label: '🥩 Carnes' },
-  { key: 'pescado', label: '🐟 Pescado' },
-  { key: 'pastas', label: '🍝 Pastas/Arroces' },
-  { key: 'postres', label: '🧁 Postres' },
-  { key: 'molecular', label: '🧪 Molecular' },
-  { key: 'sous-vide', label: '⚗️ Sous Vide' },
-  { key: 'francesa', label: '🇫🇷 Francesa' },
-  { key: 'italiana', label: '🇮🇹 Italiana' },
-  { key: 'espanola', label: '🇪🇸 Española' },
-  { key: 'japonesa', label: '🇯🇵 Japonesa' },
-  { key: 'vegetariano', label: '🌿 Vegetariano' },
-  { key: 'facil', label: '⭐ Fácil' },
-  { key: 'medio', label: '⭐⭐ Medio' },
-  { key: 'avanzado', label: '⭐⭐⭐ Avanzado' },
-  { key: 'escoffier', label: '🏰 Escoffier' },
-  { key: 'modernista', label: '🔬 Modernista' },
-  { key: 'entrantes', label: '🍤 Entrantes' },
-  { key: 'tecnicas', label: '📐 Técnicas' },
+  { key: 'salsas', label: 'Salsas' },
+  { key: 'carnes', label: 'Carnes' },
+  { key: 'pescado', label: 'Pescado' },
+  { key: 'pastas', label: 'Pastas/Arroces' },
+  { key: 'postres', label: 'Postres' },
+  { key: 'molecular', label: 'Molecular' },
+  { key: 'sous-vide', label: 'Sous Vide' },
+  { key: 'francesa', label: 'Francesa' },
+  { key: 'italiana', label: 'Italiana' },
+  { key: 'espanola', label: 'Española' },
+  { key: 'japonesa', label: 'Japonesa' },
+  { key: 'vegetariano', label: 'Vegetariano' },
+  { key: 'facil', label: 'Fácil' },
+  { key: 'medio', label: 'Medio' },
+  { key: 'avanzado', label: 'Avanzado' },
+  { key: 'escoffier', label: 'Escoffier' },
+  { key: 'modernista', label: 'Modernista' },
+  { key: 'entrantes', label: 'Entrantes' },
+  { key: 'tecnicas', label: 'Técnicas' },
 ]
 
 export function Home() {
@@ -83,7 +83,7 @@ export function Home() {
         </div>
       </div>
 
-      <div className="pt-3 pb-8 px-4">
+      <div className="pt-4 pb-8 px-4">
         <div className="space-y-3">
           {filtered.map((recipe) => (
             <Link
