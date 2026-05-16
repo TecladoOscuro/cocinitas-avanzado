@@ -26,11 +26,23 @@ const allTags = [
 
 export function Home() {
   const [activeTag, setActiveTag] = useState<string | null>(null)
+  const [search, setSearch] = useState('')
 
   const filtered = useMemo(() => {
-    if (!activeTag) return recipes
-    return recipes.filter((r) => r.tags?.includes(activeTag))
-  }, [activeTag])
+    let result = activeTag ? recipes.filter((r) => r.tags?.includes(activeTag)) : recipes
+    if (search.trim()) {
+      const q = search.toLowerCase().trim()
+      result = result.filter((r) =>
+        r.name.toLowerCase().includes(q) ||
+        r.description.toLowerCase().includes(q) ||
+        r.subtitle.toLowerCase().includes(q) ||
+        r.chef.toLowerCase().includes(q) ||
+        r.ingredients.some((i) => i.name.toLowerCase().includes(q)) ||
+        r.tags?.some((t) => t.toLowerCase().includes(q))
+      )
+    }
+    return result
+  }, [activeTag, search])
 
   return (
     <div className="bg-ac-bg text-ac-text min-h-dvh">
@@ -43,8 +55,17 @@ export function Home() {
         </div>
       </div>
 
-      <div className="fixed top-[calc(3rem+env(safe-area-inset-top,0px))] left-0 right-0 z-10 bg-ac-bg border-b border-ac-border overflow-x-auto no-scrollbar">
-        <div className="flex gap-1.5 px-4 py-2 whitespace-nowrap">
+      <div className="fixed top-[calc(3rem+env(safe-area-inset-top,0px))] left-0 right-0 z-10 bg-ac-bg border-b border-ac-border">
+        <div className="px-4 pt-2">
+          <input
+            type="text"
+            placeholder="Buscar receta, ingrediente, chef..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full bg-ac-surface border border-ac-border rounded-lg px-3 py-1.5 text-sm text-ac-text placeholder-ac-muted focus:outline-none focus:border-ac-accent"
+          />
+        </div>
+        <div className="flex gap-1.5 px-4 py-2 overflow-x-auto no-scrollbar">
           <button
             onClick={() => setActiveTag(null)}
             className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${!activeTag ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
@@ -63,7 +84,7 @@ export function Home() {
         </div>
       </div>
 
-      <div className="pt-[calc(7rem+env(safe-area-inset-top,0px))] pb-8 px-4">
+      <div className="pt-[calc(9rem+env(safe-area-inset-top,0px))] pb-8 px-4">
         <div className="space-y-3">
           {filtered.map((recipe) => (
             <Link
