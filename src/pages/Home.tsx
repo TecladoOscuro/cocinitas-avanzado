@@ -66,7 +66,7 @@ export function Home() {
           <div className="flex gap-1.5 px-4 py-2 overflow-x-auto no-scrollbar">
             <button
               onClick={() => setActiveTag(null)}
-              className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${!activeTag ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
+              className={`text-[11px] font-medium px-2.5 py-1 rounded-full whitespace-nowrap transition-colors ${!activeTag ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
             >
               Todos
             </button>
@@ -74,7 +74,7 @@ export function Home() {
               <button
                 key={tag.key}
                 onClick={() => setActiveTag(activeTag === tag.key ? null : tag.key)}
-                className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${activeTag === tag.key ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
+                className={`text-[11px] font-medium px-2.5 py-1 rounded-full whitespace-nowrap transition-colors ${activeTag === tag.key ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
               >
                 {tag.label}
               </button>
