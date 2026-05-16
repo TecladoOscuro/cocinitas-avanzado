@@ -83,7 +83,7 @@ export function Home() {
         </div>
       </div>
 
-      <div className="pb-8 px-4">
+      <div className="pt-3 pb-8 px-4">
         <div className="space-y-3">
           {filtered.map((recipe) => (
             <Link
