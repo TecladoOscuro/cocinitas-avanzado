@@ -46,45 +46,44 @@ export function Home() {
 
   return (
     <div className="bg-ac-bg text-ac-text min-h-dvh">
-      <div className="fixed top-0 left-0 right-0 z-20 bg-ac-bg border-b border-ac-border pt-[env(safe-area-inset-top,0px)]">
-        <div className="flex items-center justify-between h-12 px-5">
+      <div className="sticky top-0 z-20 bg-ac-bg pt-[env(safe-area-inset-top,0px)]">
+        <div className="flex items-center justify-between h-12 px-5 border-b border-ac-border">
           <h1 className="text-lg font-bold">⭐🍽️ Alta Cocina</h1>
           <span className="text-xs text-ac-muted bg-ac-surface rounded-full px-2.5 py-1">
             {filtered.length}/{recipes.length}
           </span>
         </div>
-      </div>
-
-      <div className="fixed top-[calc(3rem+env(safe-area-inset-top,0px))] left-0 right-0 z-10 bg-ac-bg border-b border-ac-border">
-        <div className="px-4 pt-2">
-          <input
-            type="text"
-            placeholder="Buscar receta, ingrediente, chef..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-ac-surface border border-ac-border rounded-lg px-3 py-1.5 text-sm text-ac-text placeholder-ac-muted focus:outline-none focus:border-ac-accent"
-          />
-        </div>
-        <div className="flex gap-1.5 px-4 py-2 overflow-x-auto no-scrollbar">
-          <button
-            onClick={() => setActiveTag(null)}
-            className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${!activeTag ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
-          >
-            Todos
-          </button>
-          {allTags.map((tag) => (
+        <div className="border-b border-ac-border">
+          <div className="px-4 pt-2">
+            <input
+              type="text"
+              placeholder="Buscar receta, ingrediente, chef..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full bg-ac-surface border border-ac-border rounded-lg px-3 py-1.5 text-sm text-ac-text placeholder-ac-muted focus:outline-none focus:border-ac-accent"
+            />
+          </div>
+          <div className="flex gap-1.5 px-4 py-2 overflow-x-auto no-scrollbar">
             <button
-              key={tag.key}
-              onClick={() => setActiveTag(activeTag === tag.key ? null : tag.key)}
-              className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${activeTag === tag.key ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
+              onClick={() => setActiveTag(null)}
+              className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${!activeTag ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
             >
-              {tag.label}
+              Todos
             </button>
-          ))}
+            {allTags.map((tag) => (
+              <button
+                key={tag.key}
+                onClick={() => setActiveTag(activeTag === tag.key ? null : tag.key)}
+                className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors ${activeTag === tag.key ? 'bg-ac-accent text-white' : 'bg-ac-surface text-ac-muted'}`}
+              >
+                {tag.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="pt-[calc(9rem+env(safe-area-inset-top,0px))] pb-8 px-4">
+      <div className="pb-8 px-4">
         <div className="space-y-3">
           {filtered.map((recipe) => (
             <Link
